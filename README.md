@@ -1,2 +1,2 @@
-# SAP Hybris Commerce Embedded REST API Server
-SAP Hybris Commerce Embedded REST API Server
+# Embedded REST API Server for SAP Hybris Commerce
+Embedded REST API Server for SAP Hybris Commerce
