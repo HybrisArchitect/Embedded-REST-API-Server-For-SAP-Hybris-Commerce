@@ -32,28 +32,11 @@ abstract class AdvancedHttpHandler implements HttpHandler {
     exchange.close();
   }
   
-  public void response200HTML(HttpExchange exchange, String response) throws IOException {
-    exchange.responseHeaders['Content-Type'] = 'text/html'
-    exchange.responseHeaders['charset'] = 'utf-8' 
-    exchange.sendResponseHeaders(200, response.length());
-    exchange.getResponseBody().write(response.bytes);
-    exchange.close();
-  }
-  
-  public void response500HTML(HttpExchange exchange, String response) throws IOException {
-    exchange.responseHeaders['Content-Type'] = 'text/html'
-     exchange.responseHeaders['charset'] = 'utf-8'
-    exchange.sendResponseHeaders(200, response.length());
-    exchange.getResponseBody().write(response.bytes);
-    exchange.close();
-  }
-
   public void logWriter(String logEntry) {   
     def Logger logger = LoggerFactory.getLogger("HybrisArchitectLogger")
     logger.info(logEntry)
-  } 
-   
-}  
+  }  
+}
 
 class ProductHandler extends AdvancedHttpHandler {
     def server
@@ -174,7 +157,7 @@ class TestHandler extends AdvancedHttpHandler {
         responseREST(exchange,builder.toString());
      
         }catch(Exception ex){
-          response500HTML(exchange,ex.toString());
+          responseREST(exchange,ex.toString());
           logWriter(ex.printStackTrace());
         }
     }
